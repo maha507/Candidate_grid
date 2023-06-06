@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { Grid } from 'gridjs-selte';
+	import { Grid } from 'gridjs';
 	import 'bootstrap/dist/css/bootstrap.min.css';
 	let grid;
 	let jsonData = [];
