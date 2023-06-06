@@ -10,7 +10,6 @@
 	  const responseData = await response.json();
 	  jsonData = responseData.data;
 	  console.log(jsonData, "jsonData");
-  
 	  grid = new Grid({
 		columns: ['firstName', 'surname', 'email', 'mobile', 'Actions'],
 		data: jsonData.map((item) => [
