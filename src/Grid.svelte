@@ -181,27 +181,21 @@
   
 	{#if source && headers}
 	<RevoGrid class="grid" source={source} resize="true" columns={headers} theme="material">
-	
-		<div slot="cells" let-cell>
-			{#if cell.column.prop === "edit"}
-			  <div class="d-flex justify-content-center">
-				<a href="#" class="btn btn-primary btn-sm" on:click={() => editCandidate(cell.row.data)}>Edit</a>
-			  </div>
-			{:else if cell.column.prop === "delete"}
-			  <div class="d-flex justify-content-center">
-				<a href="#" class="btn btn-danger btn-sm" on:click={() => deleteCandidate(cell.row.data)}>Delete</a>
-			  </div>
-			{:else if cell.column.prop === "FirstName"}
-			  <div class="d-flex justify-content-center">
-				<a href="#">{cell.data}</a>
-			  </div>
-			{:else}
-			  {cell.data}
-			{/if}
-			</div>
-   
-	  
-	  
+        <template slot="cell-template" let-cell>
+            <!-- Custom cell rendering based on the column properties or data -->
+            {#if cell.column.prop === "Actions"}
+              <div class="d-flex justify-content-center">
+                <a href="#" class="btn btn-primary btn-sm" on:click={() => editCandidate(cell.row.data)}>Edit</a>
+                <a href="#" class="btn btn-danger btn-sm" on:click={() => deleteCandidate(cell.row.data)}>Delete</a>
+              </div>
+            {:else if cell.column.prop === "FirstName"}
+              <div class="d-flex justify-content-center">
+                <a href="#">{cell.data}</a>
+              </div>
+            {:else}
+              {cell.data}
+            {/if}
+          </template> 
 	</RevoGrid>
 	{:else}
 	<p>Loading data...</p>
