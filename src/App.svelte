@@ -14,7 +14,7 @@
       jsonData = responseData.data;
   
       gridData = jsonData.map((item) => ({
-        name: item.fullname,
+        name: item.fullName,
        id: item.id,
         email: item.email,
         phone: item.mobile,
@@ -24,7 +24,7 @@
         dataSource: gridData,
         columns: [
             { dataField: 'id', caption: 'ID' },
-          { dataField: "name", caption: "full Name" },
+          { dataField: "name", caption: "full Name" , dataType: "url"},
           { dataField: "email", caption: "Email" },
           { dataField: "phone", caption: "Mobile" },
         ],
