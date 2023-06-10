@@ -15,6 +15,7 @@
   
       gridData = jsonData.map((item) => ({
         id: item.id,
+        reference: item.reference,
         name: item.fullName,
         email: item.email,
         phone: item.mobile,
@@ -27,6 +28,7 @@
           { dataField: "name", caption: "Name", dataType: "url" },
           { dataField: "email", caption: "Email" },
           { dataField: "phone", caption: "Mobile" },
+          // Define other columns as needed
         ],
         showBorders: true,
         filterRow: {
@@ -43,6 +45,7 @@
           popup: {
             showTitle: true,
             title: "Row in the editing state",
+            cssClass: "custom-popup", // Add custom CSS class to the popup
           },
         },
         paging: {
@@ -54,20 +57,19 @@
     });
   </script>
   
-  <div id="dataGrid"></div>
-  
   <style>
-    .add-button {
-      margin-bottom: 10px;
+    /* Custom CSS for popups */
+    .custom-popup .dx-popup-title {
+      background-color: #f0f0f0;
+      color: #333;
+      font-weight: bold;
+      padding: 10px;
+    }
+  
+    .custom-popup .dx-popup-content {
+      padding: 10px;
     }
   </style>
   
-  <button class="add-button btn btn-primary" on:click={() => addRow()}>Add</button>
-  
-  <script>
-    function addRow() {
-      const grid = DevExpress.ui.dxDataGrid.getInstance(document.getElementById("dataGrid"));
-      grid.addRow();
-    }
-  </script>
+  <div id="dataGrid"></div>
   
