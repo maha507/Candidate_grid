@@ -18,7 +18,7 @@
 
   //   id: item.id,
 
-  reference:item.reference,
+
     name: item.fullName,
     email:item.email,
     phone:item.mobile,
@@ -32,7 +32,7 @@ console.log(gridData,"griddata");
   var dataGrid = new DevExpress.ui.dxDataGrid("#dataGrid", {
       dataSource: gridData,
       columns: [
-      { dataField: 'reference', caption: 'ID' },
+     
       { dataField: 'name', caption: 'Name', dataType: "url" },
       { dataField: 'email', caption: 'Email' },
       { dataField: 'phone', caption: 'Mobile' },
@@ -64,11 +64,7 @@ console.log(gridData,"griddata");
           pageSize: 10,
       },
       // pagination:true,
-      pager: {
-          showPageSizeSelector: true,
-          allowedPageSizes: [5, 10, 20],
-          showInfo: true,
-      },
+     
   });
   });
   // dataGrid.render();
