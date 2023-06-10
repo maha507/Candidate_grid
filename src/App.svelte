@@ -24,7 +24,7 @@
       const dataGrid = new DevExpress.ui.dxDataGrid(document.getElementById("dataGrid"), {
         dataSource: gridData,
         columns: [
-          { dataField: "id", caption: "ID", width: 50 },
+          { dataField: "id", caption: "ID", width: 500 },
           { dataField: "name", caption: "Name", width: 200 },
           { dataField: "email", caption: "Email", width: 200 },
           { dataField: "phone", caption: "Mobile", width: 150 },
