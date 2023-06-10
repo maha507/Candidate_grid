@@ -46,6 +46,7 @@
             showTitle: true,
             title: "Row in the editing state",
             cssClass: "custom-popup", // Add custom CSS class to the popup
+            showcssClass: true,
           },
         },
         paging: {
