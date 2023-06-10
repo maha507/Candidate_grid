@@ -58,7 +58,7 @@
         },
         onRowInserting: async (e) => {
           try {
-            const response = await fetch("https://api.recruitly.io/api/candidate", {
+            const response = await fetch("https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -86,7 +86,7 @@
         },
         onRowUpdating: async (e) => {
           try {
-            const response = await fetch(`https://api.recruitly.io/api/candidate/${e.key}`, {
+            const response = await fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`, {
               method: "PUT",
               headers: {
                 "Content-Type": "application/json",
@@ -115,7 +115,7 @@
         },
         onRowRemoving: async (e) => {
           try {
-            const response = await fetch(`https://api.recruitly.io/api/candidate/${e.key}`, {
+            const response = await fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`, {
               method: "DELETE",
               headers: {
                 apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
