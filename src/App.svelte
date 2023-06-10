@@ -14,7 +14,7 @@
       jsonData = responseData.data;
   
       gridData = jsonData.map((item) => ({
-        fullname: item.fullname,
+        name: item.fullname,
        
         email: item.email,
         phone: item.mobile,
@@ -23,7 +23,8 @@
       const dataGrid = new DevExpress.ui.dxDataGrid(document.getElementById("dataGrid"), {
         dataSource: gridData,
         columns: [
-          { dataField: "fullname", caption: "full Name" },
+            { dataField: 'id', caption: 'ID' },
+          { dataField: "name", caption: "full Name" },
           { dataField: "email", caption: "Email" },
           { dataField: "phone", caption: "Mobile" },
         ],
