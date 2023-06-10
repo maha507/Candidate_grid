@@ -58,19 +58,21 @@
         },
         onRowInserting: async (e) => {
           try {
-            const response = await fetch("https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
-              },
-              body: JSON.stringify({
-                reference: e.data.reference,
-                fullName: e.data.name,
-                email: e.data.email,
-                mobile: e.data.phone,
-              }),
-            });
+            const response = await fetch(
+              "https://api.recruitly.io/api/candidate/add?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  reference: e.data.reference,
+                  fullName: e.data.name,
+                  email: e.data.email,
+                  mobile: e.data.phone,
+                }),
+              }
+            );
   
             const responseData = await response.json();
             if (response.ok) {
@@ -86,20 +88,21 @@
         },
         onRowUpdating: async (e) => {
           try {
-            const response = await fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`, {
-              method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-                apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
-              },
-              body: JSON.stringify({
-                id: e.key,
-                reference: e.newData.reference,
-                fullName: e.newData.name,
-                email: e.newData.email,
-                mobile: e.newData.phone,
-              }),
-            });
+            const response = await fetch(
+              `https://api.recruitly.io/api/candidate/update/${e.key}?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`,
+              {
+                method: "PUT",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  reference: e.newData.reference,
+                  fullName: e.newData.name,
+                  email: e.newData.email,
+                  mobile: e.newData.phone,
+                }),
+              }
+            );
   
             const responseData = await response.json();
             if (response.ok) {
@@ -115,12 +118,15 @@
         },
         onRowRemoving: async (e) => {
           try {
-            const response = await fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`, {
-              method: "DELETE",
-              headers: {
-                apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
-              },
-            });
+            const response = await fetch(
+              `https://api.recruitly.io/api/candidate/delete/${e.key}?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`,
+              {
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              }
+            );
   
             if (response.ok) {
               const removedItemIndex = gridData.findIndex((item) => item.id === e.key);
@@ -142,4 +148,6 @@
       dataGrid.render();
     });
   </script>
+  
   <div id="dataGrid"></div>
+  
