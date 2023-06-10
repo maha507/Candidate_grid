@@ -57,14 +57,6 @@
           pageSize: 20,
         },
         onRowInserting: async (e) => {
-          const newData = {
-            // Provide the new record data
-            reference: e.data.reference,
-            fullName: e.data.name,
-            email: e.data.email,
-            mobile: e.data.phone,
-          };
-  
           try {
             const response = await fetch("https://api.recruitly.io/api/candidate", {
               method: "POST",
@@ -72,12 +64,16 @@
                 "Content-Type": "application/json",
                 apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
               },
-              body: JSON.stringify(newData),
+              body: JSON.stringify({
+                reference: e.data.reference,
+                fullName: e.data.name,
+                email: e.data.email,
+                mobile: e.data.phone,
+              }),
             });
   
             const responseData = await response.json();
             if (response.ok) {
-              // Update the grid with the newly added record
               e.data.id = responseData.id;
               gridData.push(e.data);
               dataGrid.refresh();
@@ -89,15 +85,6 @@
           }
         },
         onRowUpdating: async (e) => {
-          const updatedData = {
-            // Provide the updated record data
-            id: e.key,
-            reference: e.newData.reference,
-            fullName: e.newData.name,
-            email: e.newData.email,
-            mobile: e.newData.phone,
-          };
-  
           try {
             const response = await fetch(`https://api.recruitly.io/api/candidate/${e.key}`, {
               method: "PUT",
@@ -105,12 +92,17 @@
                 "Content-Type": "application/json",
                 apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
               },
-              body: JSON.stringify(updatedData),
+              body: JSON.stringify({
+                id: e.key,
+                reference: e.newData.reference,
+                fullName: e.newData.name,
+                email: e.newData.email,
+                mobile: e.newData.phone,
+              }),
             });
   
             const responseData = await response.json();
             if (response.ok) {
-              // Update the grid with the updated record
               const updatedItemIndex = gridData.findIndex((item) => item.id === e.key);
               gridData[updatedItemIndex] = e.newData;
               dataGrid.refresh();
@@ -123,7 +115,7 @@
         },
         onRowRemoving: async (e) => {
           try {
-            const response = await fetch(`https://api.recruitly.io/api/candidate?apiKey=TEST9349C0221517DA4942E39B5DF18C68CDA154`, {
+            const response = await fetch(`https://api.recruitly.io/api/candidate/${e.key}`, {
               method: "DELETE",
               headers: {
                 apiKey: "TEST9349C0221517DA4942E39B5DF18C68CDA154",
@@ -131,7 +123,6 @@
             });
   
             if (response.ok) {
-              // Remove the record from the grid
               const removedItemIndex = gridData.findIndex((item) => item.id === e.key);
               gridData.splice(removedItemIndex, 1);
               dataGrid.refresh();
@@ -142,46 +133,13 @@
             console.error("Failed to delete record:", error);
           }
         },
+        onInitialized: () => {
+          // Function called when the grid is initialized
+          // ...
+        },
       });
   
       dataGrid.render();
     });
   </script>
-  
-  <style>
-    /* Custom CSS for popups */
-    .custom-popup .dx-popup-title {
-      background-color: #f0f0f0;
-      color: #333;
-      font-weight: bold;
-      padding: 10px;
-    }
-  
-    .custom-popup .dx-popup-content {
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-    }
-  
-    .custom-popup .dx-form .dx-item {
-      margin-bottom: 10px;
-    }
-  
-    .custom-popup .dx-form .dx-field-item-label {
-      width: 100px;
-      text-align: right;
-      margin-right: 10px;
-      font-weight: bold;
-    }
-  
-    .custom-popup .dx-form .dx-field-item-content {
-      flex-grow: 1;
-    }
-  
-    .custom-popup .dx-button {
-      margin-top: 10px;
-    }
-  </style>
-  
   <div id="dataGrid"></div>
-  
