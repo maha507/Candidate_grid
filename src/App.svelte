@@ -151,6 +151,5 @@
       dataGrid.render();
     });
   </script>
-  
   <div id="dataGrid"></div>
-  
+  <h1></h1>
