@@ -15,7 +15,7 @@
   
       gridData = jsonData.map((item) => ({
         name: item.fullname,
-       
+       id: item.id,
         email: item.email,
         phone: item.mobile,
       }));
