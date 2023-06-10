@@ -67,7 +67,13 @@
     }
   
     .custom-popup .dx-popup-content {
+      display: flex;
+      flex-direction: column;
       padding: 10px;
+    }
+  
+    .custom-popup .dx-form .dx-item {
+      margin-bottom: 10px;
     }
   </style>
   
