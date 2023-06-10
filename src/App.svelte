@@ -44,7 +44,7 @@
           },
           popup: {
             showTitle: true,
-            title: "Row in the editing state",
+            title: "Candidate in editing stage",
             cssClass: "custom-popup", // Add custom CSS class to the popup
             showcssClass: true,
           },
